@@ -1,0 +1,52 @@
+body {
+  display: flex;
+  margin: 0;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #333;
+  height: 100vh;
+}
+
+.hidden {
+  opacity: 0;
+}
+
+.alan {
+  background-image: url('alan-turing.png');
+  background-size: cover;
+  height: 40vh;
+  width: 40vh;
+  filter: drop-shadow(5px 5px 5px white) drop-shadow(-5px -5px 5px white);
+}
+
+.speech {
+  --height: 20vw;
+  --width: calc(2 * var(--height));
+  background-color: white;
+  color: #333;
+  border-radius: 50%;
+  width: var(--width);
+  height: var(--height);
+  position: fixed;
+  border-radius: 50%;
+  font-size: 5em;
+  text-align: center;
+  line-height: var(--height);
+}
+
+.speech::before {
+  content: '';
+  position: absolute;
+  background: white;
+  width: 5vw;
+  height: 5vw;
+  left: -1vw;
+  top: calc(50% - 2.5vw);
+  transform: rotate(45deg);
+}
+
+.wave {
+  line-height: 25vh; 
+  font-size: 20em;
+}
+

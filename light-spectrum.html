@@ -1,0 +1,143 @@
+<!doctype html>
+<html>
+  <head>
+    <link rel="stylesheet" href="style.css">
+    <style>
+      .grid {
+        --line-colour: rgba(255, 255, 255, 0.25);
+        margin-top: 20vh;
+        height: 25vh;
+        background: repeating-linear-gradient(to right, transparent, transparent 25px, var(--line-colour) 25px, var(--line-colour) 26px),
+          repeating-linear-gradient(to bottom, transparent, transparent 25px, var(--line-colour) 25px, var(--line-colour) 26px),
+          linear-gradient(90deg, red, orange, #22ff2f, cyan, magenta, #800020);
+        box-shadow: inset 0 20px 30px #333, inset 0 -20px 30px #333;
+        position: relative;
+      }
+
+      .point {
+        position: absolute;
+        width: 5px;
+        height: 100%;
+        border: 2px solid white;
+      }
+
+      .point.post {
+        height: 110%;
+        border: 3px solid red;
+        box-shadow: 2px 2px 2px rgba(0, 0, 0, .5), inset 2px 2px 2px rgba(0, 0, 0, .5);
+      }
+
+      .point::before {
+        position: fixed;
+        top: 10vh;
+        font-size: 3em;
+        color: white;
+      }
+
+      #one {
+        left: 15%;
+      }
+      #one::before {
+        left: calc(15% - 1em);
+        content: '“one”';
+      }
+      #two {
+        left: 60%;
+      }
+      #two::before {
+        content: '“two”';
+        left: calc(60% - 1em);
+      }
+      #two-alpha {
+        left: 53%;
+        bottom: -7.5%;
+      }
+      #three {
+        left: 80%;
+      }
+      #three::before {
+        content: '“three”';
+        left: calc(80% - 1em);
+      }
+
+      .talking {
+        display: flex;
+      }
+      .speech {
+        bottom: 10vh;
+        right: 20vw;
+      }
+
+      .embiggen::before {
+        animation: 1s pulse forwards;
+      }
+
+      .wave {
+        color: #0fc;
+        font-size: 20vh;
+        line-height: 20vh;
+      }
+
+      @keyframes pulse {
+        from {
+          transform: scale(1);
+        }
+        59% {
+          transform: scale(2);
+        }
+        60% {
+          transform: scale(2) rotate(45deg);
+        }
+        70% {
+          transform: scale(2) rotate(-45deg);
+        }
+        80% {
+          transform: scale(2) rotate(45deg);
+        }
+        90% {
+          transform: scale(2) rotate(-45deg);
+        }
+        to {
+          transform: scale(1) rotate(0);
+        }
+      }
+   </style>
+  </head>
+  <body>
+    <div class="grid">
+      <div class="point" id="one"></div>
+      <div class="point" id="two"></div>
+      <div class="post point hidden" id="two-alpha"></div> 
+      <div class="point" id="three"></div>
+    </div>
+    <div class="talking hidden">
+      <div class="alan"></div>
+      <div class="speech">two</div>
+    </div>
+
+    <script>
+      document.querySelector('body').addEventListener('click', () => {
+        document.querySelectorAll('.point:not(.post)').forEach((point) => 
+          { 
+            point.style.width = '18%';
+            point.style.marginLeft = '-9%';
+          }
+        );
+        document.querySelector('body').addEventListener('click', () => {
+          document.querySelector('.talking').classList.remove('hidden');
+          document.querySelector('body').addEventListener('click', () => {
+            const speech = document.querySelector('.speech');
+            speech.innerHTML = '&acd;';
+            speech.classList.add('wave');
+
+            document.querySelector('body').addEventListener('click', () => {
+              document.getElementById('two-alpha').classList.remove('hidden');
+              document.getElementById('two').classList.add('embiggen');
+
+            }, { once: true })
+          }, { once: true });
+        }, { once: true });
+        }, { once: true });
+    </script>
+  </body>
+</html>

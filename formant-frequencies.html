@@ -1,0 +1,96 @@
+<!doctype html>
+<html>
+  <head>
+    <link rel="stylesheet" href="style.css">
+    <style>
+      body {
+        justify-content: space-around;
+      }
+
+      .speech {
+        top: 5vh;
+        left: 50%;
+      }
+
+      .transform {
+        display: flex;
+        height: 25vh;
+        justify-content: space-around;
+      }
+
+      img {
+        border: 4px solid orange;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="alan"></div>
+    <div class="speech hidden">one</div>
+    <div class="transform">
+      <div id="sound-wave-wrapper" class="hidden" style="background-color: white; display: flex">
+        <img id="sound-wave" src="one-wave.png" />
+      </div>
+      <div id="formant-transform-wrapper">
+        <img id="formant-transform" class="hidden" src="one-transform.png" />
+      </div>
+      <div id="colour-wave" class="hidden" style="color: orange">&acd;</div>
+    </div>
+    <script>
+      let actions = ['.speech', '#sound-wave-wrapper', '#formant-transform', '#colour-wave']
+      let actionIndex = -1;
+
+      let numbers = [{ name: 'two', colour: 'cyan' }, { name: 'three', colour: 'magenta' }];
+      let numberIndex = -1;
+
+      function showTransform() {
+        document.querySelector('.transform').classList.remove('hidden');
+        document.querySelector('body').addEventListener('click', nextNumber, { once: true });
+      }
+
+      function nextNumber(event) {
+        if (++numberIndex >= numbers.length) {
+          location.href = 'light-spectrum.html';
+          return;
+        }
+
+        const colour = numbers[numberIndex].colour;
+        const number = numbers[numberIndex].name;
+
+        const colourWaveImage = document.createElement('img');
+        colourWaveImage.src = `${number}-wave.png`;
+        const waveContainer = document.getElementById('sound-wave-wrapper');
+        waveContainer.innerHTML = '';
+        waveContainer.append(colourWaveImage);
+
+        const transformImage = document.createElement('img');
+        transformImage.src = `${number}-transform.png`;
+        const transformContainer = document.getElementById('formant-transform-wrapper');
+        transformContainer.innerHTML = '';
+        transformContainer.append(transformImage);
+
+        document.querySelector('.speech').innerHTML = number;
+        document.querySelectorAll('img').forEach(img => {
+          img.style.borderColor = colour;
+        });
+
+        document.getElementById('colour-wave').style.color = colour;
+
+        document.querySelector('.transform').classList.add('hidden');
+
+        document.querySelector('body').addEventListener('click', showTransform, { once: true });
+      }
+
+      function showImage() {
+        if (++actionIndex === actions.length) {
+          document.querySelector('body').removeEventListener('click', showImage);
+          nextNumber();
+          return;
+        }
+
+        document.querySelector(actions[actionIndex]).classList.remove('hidden');
+      }
+
+      document.querySelector('body').addEventListener('click', showImage);
+    </script>
+  </body>
+</html>
