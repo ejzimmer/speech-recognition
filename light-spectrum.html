@@ -9,63 +9,15 @@
         box-shadow: 2px 2px 2px rgba(0, 0, 0, .5), inset 2px 2px 2px rgba(0, 0, 0, .5);
       }
 
-      .point::before {
-        position: fixed;
-        top: 10vh;
-        font-size: 3em;
-        color: white;
-      }
-
-      #one::before {
-        left: calc(15% - 1em);
-        content: '“one”';
-      }
-      #two::before {
-        content: '“two”';
-        left: calc(60% - 1em);
-      }
       #two-alpha {
         left: 53%;
         bottom: -7.5%;
       }
-      #three::before {
-        content: '“three”';
-        left: calc(80% - 1em);
-      }
-
-      .embiggen::before {
-        animation: 1s pulse forwards;
-      }
 
       .wave {
         color: #0fc;
-        font-size: 20vh;
-        line-height: 20vh;
       }
 
-      @keyframes pulse {
-        from {
-          transform: scale(1);
-        }
-        59% {
-          transform: scale(2);
-        }
-        60% {
-          transform: scale(2) rotate(40deg);
-        }
-        70% {
-          transform: scale(2) rotate(-40deg);
-        }
-        80% {
-          transform: scale(2) rotate(40deg);
-        }
-        90% {
-          transform: scale(2) rotate(-40deg);
-        }
-        to {
-          transform: scale(1) rotate(0);
-        }
-      }
    </style>
   </head>
   <body>
@@ -99,7 +51,7 @@
               document.getElementById('two-alpha').classList.remove('hidden');
               document.getElementById('two').classList.add('embiggen');
 
-              document.querySelector('body').addEventListener('click', () => location.href = 'issues.html');
+              document.querySelector('body').addEventListener('click', () => location.href = 'different-voices.html');
 
             }, { once: true })
           }, { once: true });

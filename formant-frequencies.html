@@ -3,29 +3,32 @@
   <head>
     <link rel="stylesheet" href="style.css">
     <style>
-      body {
-        justify-content: space-around;
-      }
-
-      .speech {
-        top: 5vh;
-        left: 50%;
+      .alan-talking {
+        display: flex;
+        justify-content: space-between;
       }
 
       .transform {
         display: flex;
         height: 25vh;
         justify-content: space-around;
+        margin-bottom: 10vh;
       }
 
       img {
         border: 4px solid orange;
       }
+
+      .wave {
+        margin-top: -5vh;
+      }
     </style>
   </head>
   <body>
-    <div class="alan"></div>
-    <div class="speech hidden">one</div>
+    <div class="alan-talking">
+      <div class="alan"></div>
+      <div class="speech hidden">one</div>
+    </div>
     <div class="transform">
       <div id="sound-wave-wrapper" class="hidden" style="background-color: white; display: flex">
         <img id="sound-wave" src="one-wave.png" />

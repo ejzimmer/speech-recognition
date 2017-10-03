@@ -12,11 +12,12 @@ body {
 }
 
 .alan {
-  background-image: url('alan-turing.png');
+  background-image: url('alan-turing.png');    
   background-size: cover;
   height: 40vh;
   width: 40vh;
   filter: drop-shadow(5px 5px 5px white) drop-shadow(-5px -5px 5px white);
+  
 }
 
 .speech {
@@ -27,15 +28,22 @@ body {
   border-radius: 50%;
   width: var(--width);
   height: var(--height);
-  position: fixed;
+  position: relative;
   border-radius: 50%;
   font-size: 5em;
   text-align: center;
   line-height: var(--height);
+  margin: auto;
+  padding-bottom: 5vh;
+}
+
+.wave {
+  font-size: 25vh;
 }
 
 .speech::before {
   content: '';
+  font-size: 25vh;
   position: absolute;
   background: white;
   width: 5vw;
@@ -43,11 +51,6 @@ body {
   left: -1vw;
   top: calc(50% - 2.5vw);
   transform: rotate(45deg);
-}
-
-.wave {
-  line-height: 25vh; 
-  font-size: 20em;
 }
 
 .spectrum {
@@ -68,6 +71,13 @@ body {
   border: 2px solid white;
 }
 
+.point::before {
+  position: fixed;
+  top: 10vh;
+  font-size: 3em;
+  color: white;
+}
+
 #one {
   left: 15%;
 }
@@ -80,10 +90,48 @@ body {
 
 .talking {
   display: flex;
+  justify-content: space-between;
 }
-.speech {
-  bottom: 10vh;
-  right: 20vw;
+
+#one::before {
+  left: calc(15% - 1em);
+  content: '“one”';
+}
+#two::before {
+  content: '“two”';
+  left: calc(60% - 1em);
+}
+#three::before {
+  content: '“three”';
+  left: calc(80% - 1em);
+}
+
+@keyframes pulse {
+  from {
+    transform: scale(1);
+  }
+  59% {
+    transform: scale(2);
+  }
+  60% {
+    transform: scale(2) rotate(40deg);
+  }
+  70% {
+    transform: scale(2) rotate(-40deg);
+  }
+  80% {
+    transform: scale(2) rotate(40deg);
+  }
+  90% {
+    transform: scale(2) rotate(-40deg);
+  }
+  to {
+    transform: scale(1) rotate(0);
+  }
+}
+
+.embiggen::before {
+  animation: 1s pulse forwards;
 }
 
 
