@@ -82,10 +82,10 @@ body {
   left: 15%;
 }
 #two {
-  left: 60%;
+  left: 65%;
 }
 #three {
-  left: 80%;
+  left: 85%;
 }
 
 .talking {
@@ -99,11 +99,11 @@ body {
 }
 #two::before {
   content: '“two”';
-  left: calc(60% - 1em);
+  left: calc(65% - 1em);
 }
 #three::before {
   content: '“three”';
-  left: calc(80% - 1em);
+  left: calc(85% - 1em);
 }
 
 @keyframes pulse {

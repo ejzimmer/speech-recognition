@@ -1,0 +1,152 @@
+<!doctype html>
+<html>
+  <head>
+    <link rel="stylesheet" href="style.css">
+    <style>
+      body {
+        flex-direction: row;
+      }
+
+      .spectrum {
+        margin: auto;
+        width: 100vw;
+      }
+
+      .point {
+        margin-left: -9%;
+        width: 18%;
+      }
+
+      .point::before {
+        top: calc(50% - 25vh);
+      }
+
+      #mother {
+        left: 35%;
+      }
+      #mother::before {
+        left: calc(35% - 1em);
+        content: '“quest”';
+      }
+
+
+      #hamster {
+        left: 45%;
+      }
+      #hamster::before {
+        left: calc(45% - 1em);
+        content: '“hamster”';
+      }
+
+      #father {
+        left: 25%;
+      }
+      #father::before {
+        left: calc(25% - 1em);
+        content: '“king”';
+      }
+
+      #elderberries {
+        left: 75%;
+      }
+      #elderberries::before {
+        left: calc(75% - 1em);
+        content: '“elderberries”';
+      }
+
+      #taunt {
+        left: 95%;
+      }
+      #taunt::before {
+        right: 0;
+        content: '“taunt”';
+      }
+
+      #laden {
+        left: 5%;
+      }
+      #laden::before {
+        left: calc(5% - 1em);
+        content: '“laden”';
+      }
+
+      #swallow {
+        left: 55%;
+      }
+      #swallow::before {
+        left: calc(55% - 1em);
+        content: '“swallow”';
+      }
+
+      .point.low::before {
+        top: calc(50% - 20vh);
+      }
+
+      .point.high::before {
+        top: calc(50% - 30vh);
+      }
+
+      #pickle {
+        left: 50%;
+        border: 2px solid magenta;
+        box-shadow: 2px 2px 2px #333, inset 2px 2px 2px #333;
+        z-index: 1;
+      }
+
+      #pickle::before {
+        content: '“pickle”';
+        color: magenta;
+        left: calc(50% - 1em);
+        text-shadow: 2px 2px 2px #000;
+      }
+
+    </style>
+  </head>
+  <body>
+    <div class="spectrum">
+        <div class="point" id="one"></div>
+        <div class="point hidden" id="mother"></div>
+        <div class="point hidden low" id="hamster"></div>
+        <div class="point hidden low" id="father"></div>
+        <div class="point hidden low" id="elderberries"></div>
+        <div class="point hidden high" id="taunt"></div>
+        <div class="point" id="two"></div>
+        <div class="point hidden" id="pickle"></div>
+        <div class="point" id="three"></div>  
+        <div class="point hidden low" id="laden"></div>
+        <div class="point hidden high" id="swallow"></div>
+    </div>
+    <script>
+      const showElement = (id) => document.getElementById(id).classList.remove('hidden');
+      const shrink = (size) => {
+        document.querySelectorAll('.point').forEach(point => {
+          point.style.width = `${size}%`;
+          point.style.marginLeft = `-${size/2}%`;
+        });
+      }
+      window.onload = function () {
+        const words = ['mother', 'hamster', 'father', 'elderberries', 'taunt', 'laden', 'swallow'];
+        const body = document.querySelector('body');
+
+        body.addEventListener('click', () => {
+          showElement('mother');
+          shrink(16);
+          setTimeout(() => {
+            showElement('hamster');
+            shrink(8);
+          }, 1000)
+
+          words.forEach((word, index) => {
+            setTimeout(() => {
+              showElement(word);
+            }, index * 1000)
+          });
+
+          body.addEventListener('click', () => {
+            showElement('pickle');
+          });
+        }, { once: true })
+      };
+    </script>
+  </body>
+</html>

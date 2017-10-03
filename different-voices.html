@@ -1,0 +1,73 @@
+<!doctype html>
+<html>
+  <head>
+    <link rel="stylesheet" href="style.css">
+    <style>
+      .point {
+        margin-left: -9%;
+        width: 18%;
+      }
+
+      #grace-two {
+        width: 5px;
+        height: 110%;
+        border-color: cyan;
+        bottom: -7.5%;
+        left: 87%;
+      }
+
+      .grace {
+        height: 320px;
+        width: 412px;
+        background-image: url('grace-hopper.png');
+        filter: drop-shadow(5px 5px 5px white) drop-shadow(-5px -5px 5px white);
+      }
+
+      .wave {
+        color: magenta;
+      }
+
+    </style>
+  </head>
+  <body>
+    <div class="spectrum">
+      <div class="point" id="one"></div>
+      <div class="point" id="two"></div>
+      <div class="point hidden" id="grace-two"></div>
+      <div class="point" id="three"></div>
+    </div>
+
+    <div class="talking hidden">
+      <div class="grace"></div>
+      <div class="speech hidden">two</div>
+    </div>
+
+    <script>
+      const body = document.querySelector('body');
+      body.addEventListener('click', () => {
+        document.querySelector('.talking').classList.remove('hidden');
+
+        body.addEventListener('click', () => {
+          document.querySelector('.speech').classList.remove('hidden');
+
+          body.addEventListener('click', () => {
+            const speech = document.querySelector('.speech');
+            speech.innerHTML = '&acd;';
+            speech.classList.add('wave');
+
+            body.addEventListener('click', () => {
+              document.getElementById('grace-two').classList.remove('hidden');
+              document.getElementById('three').classList.add('embiggen');
+
+              body.addEventListener('click', () => location.href = 'not-enough-frequencies.html');
+            }, { once: true });
+
+          }, { once: true });
+        
+
+        }, { once: true });
+
+      }, { once: true });
+    </script>
+  </body>
+</html>
