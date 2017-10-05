@@ -7,6 +7,10 @@ body {
   height: 100vh;
 }
 
+img {
+  filter: drop-shadow(5px 5px 5px white) drop-shadow(-5px -5px 5px white);
+}
+
 .hidden {
   opacity: 0;
 }
@@ -17,7 +21,6 @@ body {
   height: 40vh;
   width: 40vh;
   filter: drop-shadow(5px 5px 5px white) drop-shadow(-5px -5px 5px white);
-  
 }
 
 .speech {

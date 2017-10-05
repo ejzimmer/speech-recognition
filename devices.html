@@ -2,10 +2,44 @@
 <html>
   <head>
     <link rel="stylesheet" href="style.css">
+    <style>
+      body {
+        --padding: 60px;
+        --img-height: calc(50vh - var(--padding));
+        padding: var(--padding);
+      }
+
+      img {
+        height: 100%;
+      }
+
+      .two-columns {
+        display: flex;
+        height: var(--img-height);
+        justify-content: space-around;
+      }
+
+      .one-column {
+        display: flex;
+        height: var(--img-height);
+      }
+
+      .one-column img {
+        margin: auto;
+        margin-top: calc(var(--padding) * -2);
+      }
+    </style>
   </head>
   <body>
-    <img src="home.png" />
-    <img src="alexa.png" />
-    <img src="siri.png" />
+    <div class="two-columns">
+      <img src="home.png" />
+      <img src="alexa.png" />    
+    </div>
+    <div class="one-column">
+      <img src="siri.png" />
+    </div>
+    <script>
+      document.querySelector('body').addEventListener('click', () => location.href = 'movies.html');
+    </script>
   </body>
 </html>
