@@ -2,9 +2,31 @@
 <html>
   <head>
     <link rel="stylesheet" href="style.css">
+    <style>
+      body {
+        flex-direction: row;
+      }
+      img {
+        max-height: 90vh;
+        margin: auto;
+        max-width: 90vh;
+      }
+      .hidden {
+        display: none;
+      }
+    </style>
   </head>
   <body>
     <img src="droids.png" />
-    <img src="hal.png" />
+    <img src="hal.png" class="hidden" />
   </body>
+  <script>
+    const body = document.querySelector('body');
+    body.addEventListener('click', () => {
+      document.querySelector('.hidden').classList.remove('hidden');
+      document.querySelector('img').classList.add('hidden');
+
+      body.addEventListener('click', () => { location.href = 'bell-labs.html' });
+    }, { once: true });
+  </script>
 </html>
