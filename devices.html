@@ -9,24 +9,14 @@
         padding: var(--padding);
       }
 
+      .container {
+        display: grid;
+        grid-template-columns: 20% 20% 20% 20% 20%;
+      }
+
       img {
-        height: 100%;
-      }
-
-      .two-columns {
-        display: flex;
-        height: var(--img-height);
-        justify-content: space-around;
-      }
-
-      .one-column {
-        display: flex;
-        height: var(--img-height);
-      }
-
-      .one-column img {
-        margin: auto;
-        margin-top: calc(var(--padding) * -2);
+        max-width: 33vw;
+        max-height: 50vh;
       }
 
       .done {
@@ -40,14 +30,14 @@
     </style>
   </head>
   <body>
-    <div class="two-columns">
-      <img src="home.png" />
-      <img src="alexa.png" />    
+    <div class="container">
+      <img style="grid-column-start: 1; grid-column-end: 2;" src="home.png" />
+      <img style="grid-column-start: 2; grid-column-end: 4;" src="siri.png" />
+      <img style="grid-column-start: 4; grid-column-end: 6;" src="cortana.png" />
+      <img style="grid-column-start: 2; grid-column-end: 4;" src="alexa.png" />      
+      <img style="grid-column-start: 4; grid-column-end: 6;" src="bixby.png" />
     </div>
-    <div class="one-column">
-      <img src="siri.png" />
-    </div>
-    <a class="done" href="buzzconf.html">&gt;&gt;</a>
+    <a class="done" href="siri-fail.html">&gt;&gt;</a>
     <script>
       document.querySelector('body').addEventListener('click', () => {
         location.href = 'movies.html'
