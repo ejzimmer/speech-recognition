@@ -28,6 +28,15 @@
         margin: auto;
         margin-top: calc(var(--padding) * -2);
       }
+
+      .done {
+        position: fixed;
+        bottom: 0;
+        right: 0;
+        text-decoration: none;
+        color: #222;
+        font-size: 5em;
+      }
     </style>
   </head>
   <body>
@@ -38,8 +47,11 @@
     <div class="one-column">
       <img src="siri.png" />
     </div>
+    <a class="done" href="buzzconf.html">&gt;&gt;</a>
     <script>
-      document.querySelector('body').addEventListener('click', () => location.href = 'movies.html');
+      document.querySelector('body').addEventListener('click', () => {
+        location.href = 'movies.html'
+      });
     </script>
   </body>
 </html>

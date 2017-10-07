@@ -5,6 +5,16 @@
     <style>
       ul {
         color: white;
+        font-size: 4em;
+        padding: 10vw;
+      }
+      li {
+        margin-bottom: 10vh;
+        text-shadow: 4px 4px 4px black;
+      }
+      .unfocussed {
+        opacity: .4;
+        text-shadow: none;
       }
       img {
         position: fixed;
@@ -16,11 +26,22 @@
   <body>
     <div class="columns">
       <ul>
-        <li>Automatic digit recogniser (Audrey)</li>
-        <li>Recognise digits 1 - 10</li>
-        <li>97% accuracy</li>
+        <li class="unfocussed">Automatic digit recogniser (Audrey)</li>
+        <li class="unfocussed">Recognise digits 1 - 10</li>
+        <li class="unfocussed">97% accuracy</li>
       </ul>
       <img src="audrey.png" />
     </div>
+    <script>
+      const body = document.querySelector('body');
+      body.addEventListener('click', () => {
+        const li = document.querySelector('.unfocussed');
+        if (li) {
+          li.classList.remove('unfocussed');
+        } else {
+          location.href = 'formant-frequencies.html';
+        }
+      })
+    </script>
   </body>
 </html>

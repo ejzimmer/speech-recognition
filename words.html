@@ -1,7 +1,58 @@
 <!doctype html>
 <html>
-  <head></head>
+  <head>
+    <link rel="stylesheet" href="style.css">
+    <style>
+      body {
+        font-size: 4em;
+        color: white;
+      }
+      .waveform {
+        height: 40vh;
+        margin: auto;
+        margin-right: 0;
+        margin-left: 0;
+      }
+      img {
+        filter: drop-shadow(5px 5px 5px #0f0) drop-shadow(-5px -5px 5px #0f0);
+        width: 100%;
+      }
+      .words {
+        margin: auto;
+      }
+      .hidden {
+        display: none;
+      }
+      .first, .second {
+        transition: margin-right 2s;
+      }
+      .split {
+        margin-right: 20vw;
+      }
+    </style>
+  </head>
   <body>
-    expertsexchange
+    <div class="waveform">
+      <img src="waveform.png" />
+    </div>
+    <div class="words hidden"><span class="second">expert</span><span class="first">s</span><span class="second">ex</span><span>change</span></div>
+    <script>
+      const body = document.querySelector('body');
+      body.addEventListener('click', () => {
+        body.querySelector('.hidden').classList.remove('hidden');
+        body.querySelector('.waveform').classList.add('hidden');
+
+        body.addEventListener('click', () => {
+          body.querySelector('.words .first').classList.add('split');
+
+          body.addEventListener('click', () => {
+            body.querySelector('.first').classList.remove('split');
+            body.querySelectorAll('.second').forEach(word => word.classList.add('split'));
+
+            body.addEventListener('click', () => { location.href = 'devices.html'})
+          }, { once: true });
+        }, { once: true });
+      }, { once: true })
+    </script>
   </body>
 </html>

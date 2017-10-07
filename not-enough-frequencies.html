@@ -144,7 +144,9 @@
 
           body.addEventListener('click', () => {
             showElement('pickle');
-          });
+
+            body.addEventListener('click', () => location.href = 'words.html')
+          }, { once: true });
         }, { once: true })
       };
     </script>
