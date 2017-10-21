@@ -6,12 +6,14 @@
       body {
         font-size: 4em;
         color: white;
+        text-shadow: 2px 2px 2px black;
       }
       .waveform {
         height: 40vh;
         margin: auto;
         margin-right: 0;
         margin-left: 0;
+        position: relative;
       }
       img {
         filter: drop-shadow(5px 5px 5px #0f0) drop-shadow(-5px -5px 5px #0f0);
@@ -29,27 +31,58 @@
       .split {
         margin-right: 20vw;
       }
+
+      .text {
+        border-left: 1px solid red;
+        border-right: 1px solid red;
+        position: absolute;
+        display: flex;
+        top: 50%;
+      }
+
+      .text > span {
+        border-left: 1px solid red;
+        border-right: 1px solid red;
+      }
+
+      .text > span:first-child {
+        width: 30vw;
+        display: flex;
+        justify-content: space-between;
+      }
+      .text > span:last-child {
+        width: calc(70vw - 6px);
+        display: flex;
+      }
+      .text > span:last-child span {
+        margin: auto;
+      }
     </style>
   </head>
   <body>
     <div class="waveform">
       <img src="waveform.png" />
+      <div class="text hidden"><span><span>Where</span><span>are</span><span>the</span></span><span><span>silences</span></span></div>
     </div>
     <div class="words hidden"><span class="second">expert</span><span class="first">s</span><span class="second">ex</span><span>change</span></div>
     <script>
       const body = document.querySelector('body');
       body.addEventListener('click', () => {
-        body.querySelector('.hidden').classList.remove('hidden');
-        body.querySelector('.waveform').classList.add('hidden');
-
+        body.querySelector('.text').classList.remove('hidden');
         body.addEventListener('click', () => {
-          body.querySelector('.words .first').classList.add('split');
+
+          body.querySelector('.hidden').classList.remove('hidden');
+          body.querySelector('.waveform').classList.add('hidden');
 
           body.addEventListener('click', () => {
-            body.querySelector('.first').classList.remove('split');
-            body.querySelectorAll('.second').forEach(word => word.classList.add('split'));
+            body.querySelector('.words .first').classList.add('split');
 
-            body.addEventListener('click', () => { location.href = 'devices.html'})
+            body.addEventListener('click', () => {
+              body.querySelector('.first').classList.remove('split');
+              body.querySelectorAll('.second').forEach(word => word.classList.add('split'));
+
+              body.addEventListener('click', () => { location.href = 'devices.html'})
+            }, { once: true });
           }, { once: true });
         }, { once: true });
       }, { once: true })

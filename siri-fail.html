@@ -3,8 +3,9 @@
   <head>
     <link rel="stylesheet" href="style.css">
     <style>
-      img {
-        height: 100vh;
+      img{
+        margin: auto;
+        width: 100vw;
       }
       .source {
         color: white;
@@ -14,13 +15,24 @@
         right: 10px;
         bottom: 10px;
       }
+      .hidden {
+        display: none;
+      }
     </style>
   </head>
   <body>
-    <img src="siri-fail.jpg" />
+    <img class="fail" src="siri-fail.jpg" />
+    <img class="hidden clever" src="drunk.png" />
     <div class="source">Source: @pschneider_</div>
     <script>
-      document.querySelector('body').addEventListener('click', () => location.href = 'buzzconf.html');
+      document.querySelector('body').addEventListener('click', () => {
+        document.querySelector('.fail').classList.add('hidden');
+        document.querySelector('.source').classList.add('hidden');
+        document.querySelector('.clever').classList.remove('hidden');
+
+        document.querySelector('body').addEventListener('click', () => location.href = 'buzzconf.html');
+      }, { once: true });
+      
     </script>
   </body>
 </html>
